@@ -1,5 +1,4 @@
 import streamlit as st
-import yaml
 
 def create_table_method1(flashcards, additional_text):
     headers = [card.split('\n')[0] for card in flashcards]
@@ -74,7 +73,8 @@ def extract_emoji_content(flashcards, emoji):
     return '\n\n'.join(content)
 
 def format_table_for_output(table):
-    return yaml.dump(table, default_flow_style=False)
+    # Create a plain tabular format as a string with tab-separated values
+    return "\n".join("\t".join(str(cell) for cell in row) for row in table)
 
 # Streamlit UI components
 st.title("Flashcard Processor")
@@ -92,26 +92,22 @@ if st.button("Process Flashcards"):
         # Method 1
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
-        st.subheader("Method 1 Output:")
-        st.code(output_text1, language="yaml")
-        st.download_button("Copy Method 1 Output", data=output_text1, file_name="method1_output.yaml")
+        st.subheader("Method 1 Output (Tabular):")
+        st.text_area("Method 1 Output", output_text1)
         
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
         tables2 = [create_table_method2(batch, additional_text) for batch in flashcard_batches2]
         output_text2 = "\n\n".join(format_table_for_output(table) for table in tables2)
-        st.subheader("Method 2 Output:")
-        st.code(output_text2, language="yaml")
-        st.download_button("Copy Method 2 Output", data=output_text2, file_name="method2_output.yaml")
+        st.subheader("Method 2 Output (Tabular):")
+        st.text_area("Method 2 Output", output_text2)
         
         # Method 📌
         pin_content = extract_emoji_content(flashcards, '📌')
         st.subheader("📌 Content:")
-        st.code(pin_content, language="yaml")
-        st.download_button("Copy 📌 Content", data=pin_content, file_name="pin_content.yaml")
+        st.text_area("📌 Content", pin_content)
         
         # Method 🔍
         magnifier_content = extract_emoji_content(flashcards, '🔍')
         st.subheader("🔍 Content:")
-        st.code(magnifier_content, language="yaml")
-        st.download_button("Copy 🔍 Content", data=magnifier_content, file_name="magnifier_content.yaml")
+        st.text_area("🔍 Content", magnifier_content)
