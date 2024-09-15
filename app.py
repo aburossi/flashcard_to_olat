@@ -1,4 +1,5 @@
 import streamlit as st
+import yaml
 
 def create_table_method1(flashcards, additional_text):
     headers = [card.split('\n')[0] for card in flashcards]
@@ -73,7 +74,7 @@ def extract_emoji_content(flashcards, emoji):
     return '\n\n'.join(content)
 
 def format_table_for_output(table):
-    return "\n".join("\t".join(str(cell) for cell in row) for row in table)
+    return yaml.dump(table, default_flow_style=False)
 
 # Streamlit UI components
 st.title("Flashcard Processor")
@@ -92,21 +93,25 @@ if st.button("Process Flashcards"):
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
         st.subheader("Method 1 Output:")
-        st.text(output_text1)
+        st.code(output_text1, language="yaml")
+        st.download_button("Copy Method 1 Output", data=output_text1, file_name="method1_output.yaml")
         
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
         tables2 = [create_table_method2(batch, additional_text) for batch in flashcard_batches2]
         output_text2 = "\n\n".join(format_table_for_output(table) for table in tables2)
         st.subheader("Method 2 Output:")
-        st.text(output_text2)
+        st.code(output_text2, language="yaml")
+        st.download_button("Copy Method 2 Output", data=output_text2, file_name="method2_output.yaml")
         
         # Method 📌
         pin_content = extract_emoji_content(flashcards, '📌')
         st.subheader("📌 Content:")
-        st.text(pin_content)
+        st.code(pin_content, language="yaml")
+        st.download_button("Copy 📌 Content", data=pin_content, file_name="pin_content.yaml")
         
         # Method 🔍
         magnifier_content = extract_emoji_content(flashcards, '🔍')
         st.subheader("🔍 Content:")
-        st.text(magnifier_content)
+        st.code(magnifier_content, language="yaml")
+        st.download_button("Copy 🔍 Content", data=magnifier_content, file_name="magnifier_content.yaml")
