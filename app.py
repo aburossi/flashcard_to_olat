@@ -92,22 +92,22 @@ if st.button("Process Flashcards"):
         # Method 1
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
-        st.subheader("Method 1 Output (Tabular):")
+        st.subheader("Method 1 Output (Zeile mit 📌 zur vorderen Seite zuordnen):")
         st.text_area("Method 1 Output", output_text1)
         
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
         tables2 = [create_table_method2(batch, additional_text) for batch in flashcard_batches2]
         output_text2 = "\n\n".join(format_table_for_output(table) for table in tables2)
-        st.subheader("Method 2 Output (Tabular):")
+        st.subheader("Method 2 Output (Alle Zeile von jeweils 4 Lernkarteien zuordnen):")
         st.text_area("Method 2 Output", output_text2)
         
         # Method 📌
         pin_content = extract_emoji_content(flashcards, '📌')
-        st.subheader("📌 Content:")
+        st.subheader("Neue Lernkarteien zum Importieren nur mit 📌-Zeilen:")
         st.text_area("📌 Content", pin_content)
         
         # Method 🔍
         magnifier_content = extract_emoji_content(flashcards, '🔍')
-        st.subheader("🔍 Content:")
+        st.subheader("Neue Lernkarteien zum Importieren nur mit 🔎-Zeilen:")
         st.text_area("🔍 Content", magnifier_content)
