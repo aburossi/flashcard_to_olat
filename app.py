@@ -93,14 +93,15 @@ if st.button("Process Flashcards"):
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
         st.subheader("OLAT-Import 1: 3 OLAT-Drag&Drop-Fragen. :")
-        st.text_area("Frage1 = 📌-Rückseite zur Vorderseite zuordnen. Frage2 = 🔎-Rückseite zur Vorderseite zuordnen. Frage3 = 👉-Rückseite zur Vorderseite zuordnen ", output_text1)
+        st.text_area("Frage1 = 📌-Rückseite zur Vorderseite zuordnen. Frage2 = 🔎-Rückseite zur Vorderseite zuordnen. Frage3 = 👉-Rückseite zur Vorderseite zuordnen ")
         st.text_area("Inhalte kopieren und in einem OLAT-Test importieren", output_text1)
         
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
         tables2 = [create_table_method2(batch, additional_text) for batch in flashcard_batches2]
         output_text2 = "\n\n".join(format_table_for_output(table) for table in tables2)
-        st.subheader("OLAT-Import 1: 📌-🔎-👉-Rückseiten von 4 Lernkarteien zuordnen):")
+        st.subheader("OLAT-Import 1:")
+        st.text_area("📌-🔎-👉-Rückseiten von 4 Lernkarteien zuordnen")
         st.text_area("Inhalte kopieren und in einem OLAT-Test importieren", output_text2)
         
         # Method 📌
