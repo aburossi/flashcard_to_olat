@@ -95,7 +95,7 @@ if st.button("Process Flashcards"):
         
         # Updated text with proper line breaks
         info_text = """
-        Wandelt die Lernkarteien in 3 OLAT-Drag&Drop-Fragen um. 
+        Wandelt die alle Lernkarteien in 3 OLAT-Drag&Drop-Fragen um. 
         Frage 1 = 📌-Rückseite zur Vorderseite zuordnen. 
         Frage 2 = 🔎-Rückseite zur Vorderseite zuordnen. 
         Frage 3 = 👉-Rückseite zur Vorderseite zuordnen.
@@ -113,8 +113,8 @@ if st.button("Process Flashcards"):
         
         # Updated text with proper line breaks and special characters
         info_text2 = """
-        Wandelt die Lernkarteien in mehrere OLAT-Drag&Drop-Fragen um.
-        Jede Frage ordnen 📌-🔎-👉-Rückseiten von 4 Lernkarteien.
+        Wandelt Gruppen von 4 Lernkarteien OLAT-Drag&Drop-Fragen um.
+        Jede Frage lässt die 📌-🔎-👉-Rückseiten von 4 Lernkarteien den Vorderseite zuordnen.
         
         Inhalte kopieren und in einem OLAT-Test importieren.
         """
