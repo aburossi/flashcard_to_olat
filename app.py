@@ -88,32 +88,19 @@ if st.button("Process Flashcards"):
         st.error("Please enter some flashcards before processing.")
     else:
         flashcards = input_text.split('\n\n')
-
+        
         # Method 1
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
-
-        # Keep the question placeholders as requested
-        st.subheader("OLAT-Import 1: 3 OLAT-Drag&Drop-Fragen. :")
-        st.text_area("Frage1 = 📌-Rückseite zur Vorderseite zuordnen. Frage2 = 🔎-Rückseite zur Vorderseite zuordnen. Frage3 = 👉-Rückseite zur Vorderseite zuordnen")
-
-        # Removed the text area marked with X (second text_area below)
+        st.subheader("OLAT-Import 1: Wandelt die Lernkarteien in 3 OLAT-Drag&Drop-Fragen. Frage1 = 📌-Rückseite zur Vorderseite zuornden. Frage2 = 🔎-Rückseite zur Vorderseite zuornden. Frage3 = 👉-Rückseite zur Vorderseite zuornden :")
         st.text_area("Inhalte kopieren und in einem OLAT-Test importieren", output_text1)
-
+        
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
         tables2 = [create_table_method2(batch, additional_text) for batch in flashcard_batches2]
         output_text2 = "\n\n".join(format_table_for_output(table) for table in tables2)
-
-        st.subheader("OLAT-Import 1:")
-
-        # Keep this specific text as requested
-        st.text_area("📌-🔎-👉-Rückseiten von 4 Lernkarteien zuordnen")
-
-        # Removed the text area marked with X (second text_area below)
+        st.subheader("OLAT-Import 1: 📌-🔎-👉-Rückseiten von 4 Lernkarteien zuordnen):")
         st.text_area("Inhalte kopieren und in einem OLAT-Test importieren", output_text2)
-
-
         
         # Method 📌
         pin_content = extract_emoji_content(flashcards, '📌')
