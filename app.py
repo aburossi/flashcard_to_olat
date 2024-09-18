@@ -92,8 +92,19 @@ if st.button("Process Flashcards"):
         # Method 1
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
+        
+        # Updated text with proper line breaks
+        info_text = """
+        Wandelt die Lernkarteien in 3 OLAT-Drag&Drop-Fragen. 
+        Frage 1 = 📌-Rückseite zur Vorderseite zuordnen. 
+        Frage 2 = 🔎-Rückseite zur Vorderseite zuordnen. 
+        Frage 3 = 👉-Rückseite zur Vorderseite zuordnen.
+        
+        Inhalte kopieren und in einem OLAT-Test importieren.
+        """
+        
         st.subheader("OLAT-Import 1:")
-        st.text_area("Wandelt die Lernkarteien in 3 OLAT-Drag&Drop-Fragen. Frage1 = 📌-Rückseite zur Vorderseite zuordnen. Frage2 = 🔎-Rückseite zur Vorderseite zuordnen. Frage3 = 👉-Rückseite zur Vorderseite zuordnen. /nInhalte kopieren und in einem OLAT-Test importieren", output_text1)
+        st.text_area(info_text, output_text1)
         
         # Method 2
         flashcard_batches2 = create_batches(flashcards)
