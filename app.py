@@ -80,7 +80,7 @@ def format_table_for_output(table):
 st.title("Flashcard Processor")
 
 # Input text fields
-additional_text = st.text_input("Additional text for 'Lernkarteien'")
+additional_text = st.text_input("OLAT-Fragen werden als 'Lernkarteien' betitelt. Hier kann man einen zusätzlichen Begriff für eine thematische Betitelung")
 input_text = st.text_area("Enter Flashcards (separate cards with blank lines)")
 
 if st.button("Process Flashcards"):
