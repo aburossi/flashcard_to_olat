@@ -89,6 +89,17 @@ if st.button("Process Flashcards"):
     else:
         flashcards = input_text.split('\n\n')
         
+      
+        # Method 📌
+        pin_content = extract_emoji_content(flashcards, '📌')
+        st.subheader("Neue Lernkarteien zum Importieren nur mit 📌-Zeilen:")
+        st.text_area("Inhalte kopieren und als Lernkarteien auf Quizlet importieren", pin_content)
+        
+        # Method 🔍
+        magnifier_content = extract_emoji_content(flashcards, '🔍')
+        st.subheader("Neue Lernkarteien zum Importieren nur mit 🔎-Zeilen:")
+        st.text_area("Inhalte kopieren und als Lernkarteien auf Quizlet importieren", magnifier_content)
+
         # Method 1
         tables1 = create_table_method1(flashcards, additional_text)
         output_text1 = "\n\n".join(format_table_for_output(table) for table in tables1)
@@ -121,14 +132,3 @@ if st.button("Process Flashcards"):
         
         st.subheader("OLAT-Import 2:")
         st.text_area(info_text2, output_text2)
-
-        
-        # Method 📌
-        pin_content = extract_emoji_content(flashcards, '📌')
-        st.subheader("Neue Lernkarteien zum Importieren nur mit 📌-Zeilen:")
-        st.text_area("Inhalte kopieren und als Lernkarteien auf Quizlet importieren", pin_content)
-        
-        # Method 🔍
-        magnifier_content = extract_emoji_content(flashcards, '🔍')
-        st.subheader("Neue Lernkarteien zum Importieren nur mit 🔎-Zeilen:")
-        st.text_area("Inhalte kopieren und als Lernkarteien auf Quizlet importieren", magnifier_content)
