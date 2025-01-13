@@ -81,7 +81,7 @@ st.title("Flashcard Processor")
 
 # Input text fields
 additional_text = st.text_input("OLAT-Fragen werden als 'Lernkarteien' betitelt. Hier kann man einen zusätzlichen Begriff für eine thematische Betitelung")
-input_text = st.text_area("Füge die vom Bot erstellte Lernkarteien hier ein.")
+input_text = st.text_area("Füge die vom [Bot](https://chatgpt.com/g/g-dGooBvtzu-flashcard-genius) erstellte Lernkarteien hier ein.")
 
 if st.button("Process Flashcards"):
     if not input_text.strip():
